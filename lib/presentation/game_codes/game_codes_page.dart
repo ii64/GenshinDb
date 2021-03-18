@@ -14,7 +14,7 @@ import 'package:url_launcher/url_launcher.dart';
 
 class GameCodesPage extends StatelessWidget {
   const GameCodesPage({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override

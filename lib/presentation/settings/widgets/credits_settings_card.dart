@@ -28,7 +28,7 @@ class CreditsSettingsCard extends StatelessWidget {
               margin: const EdgeInsets.only(top: 10),
               child: Text(
                 s.simplifiedChinese,
-                style: textTheme.subtitle1.copyWith(fontWeight: FontWeight.bold),
+                style: textTheme.subtitle1!.copyWith(fontWeight: FontWeight.bold),
               ),
             ),
             const BulletList(items: ["2O48#9733"], fontSize: 12),
@@ -36,7 +36,7 @@ class CreditsSettingsCard extends StatelessWidget {
               margin: const EdgeInsets.only(top: 10),
               child: Text(
                 s.russian,
-                style: textTheme.subtitle1.copyWith(fontWeight: FontWeight.bold),
+                style: textTheme.subtitle1!.copyWith(fontWeight: FontWeight.bold),
               ),
             ),
             Row(

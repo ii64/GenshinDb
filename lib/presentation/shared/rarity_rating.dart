@@ -8,9 +8,9 @@ class RarityRating extends StatelessWidget {
   final Function(int) onRated;
 
   const RarityRating({
-    Key key,
-    @required this.rarity,
-    @required this.onRated,
+    Key? key,
+    required this.rarity,
+    required this.onRated,
     this.size = 35.0,
     this.stars = 5,
   }) : super(key: key);

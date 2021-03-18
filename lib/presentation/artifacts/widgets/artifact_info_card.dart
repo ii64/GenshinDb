@@ -11,9 +11,9 @@ class ArtifactInfoCard extends StatelessWidget {
   final Function(bool) expansionCallback;
 
   const ArtifactInfoCard({
-    Key key,
-    @required this.isCollapsed,
-    this.expansionCallback,
+    Key? key,
+    required this.isCollapsed,
+    required this.expansionCallback,
   }) : super(key: key);
 
   @override

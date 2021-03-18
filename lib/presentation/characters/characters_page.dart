@@ -17,7 +17,7 @@ class CharactersPage extends StatefulWidget {
   final bool isInSelectionMode;
 
   const CharactersPage({
-    Key key,
+    Key? key,
     this.isInSelectionMode = false,
   }) : super(key: key);
 

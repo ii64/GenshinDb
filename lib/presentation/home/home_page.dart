@@ -33,9 +33,9 @@ class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin<
       slivers: [
         SliverCharactersBirthdayCard(),
         SliverMainTitle(title: s.todayAscensionMaterials),
-        _buildClickableTitle(s.forCharacters, s.seeAll, context, onClick: () => _gotoMaterialsPage(context)),
+        _buildClickableTitle(s.forCharacters, s.seeAll, context, () => _gotoMaterialsPage(context)),
         SliverTodayCharAscensionMaterials(),
-        _buildClickableTitle(s.forWeapons, s.seeAll, context, onClick: () => _gotoMaterialsPage(context)),
+        _buildClickableTitle(s.forWeapons, s.seeAll, context, () => _gotoMaterialsPage(context)),
         SliverTodayWeaponMaterials(),
         SliverMainTitle(title: s.elements),
         SliverElementsCard(),
@@ -55,7 +55,7 @@ class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin<
     );
   }
 
-  Widget _buildClickableTitle(String title, String buttonText, BuildContext context, {Function onClick}) {
+  Widget _buildClickableTitle(String title, String? buttonText, BuildContext context, Function onClick) {
     final theme = Theme.of(context);
     final row = buttonText != null
         ? Row(
@@ -75,7 +75,7 @@ class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin<
           title: Text(
             title,
             textAlign: TextAlign.start,
-            style: theme.textTheme.subtitle1.copyWith(fontWeight: FontWeight.bold),
+            style: theme.textTheme.subtitle1!.copyWith(fontWeight: FontWeight.bold),
           ),
         ),
       ),

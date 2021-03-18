@@ -6,11 +6,11 @@ import 'extensions/scroll_controller_extensions.dart';
 
 class SliverScaffoldWithFab extends StatefulWidget {
   final List<Widget> slivers;
-  final PreferredSizeWidget appbar;
+  final PreferredSizeWidget? appbar;
 
   const SliverScaffoldWithFab({
-    Key key,
-    @required this.slivers,
+    Key? key,
+    required this.slivers,
     this.appbar,
   }) : super(key: key);
 
@@ -19,8 +19,8 @@ class SliverScaffoldWithFab extends StatefulWidget {
 }
 
 class _SliverScaffoldWithFabState extends State<SliverScaffoldWithFab> with SingleTickerProviderStateMixin {
-  ScrollController _scrollController;
-  AnimationController _hideFabAnimController;
+  late ScrollController _scrollController;
+  late AnimationController _hideFabAnimController;
 
   @override
   void initState() {

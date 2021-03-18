@@ -10,10 +10,10 @@ class MaterialItem extends StatelessWidget {
   final int quantity;
 
   const MaterialItem({
-    Key key,
-    @required this.type,
-    @required this.image,
-    @required this.quantity,
+    Key? key,
+    required this.type,
+    required this.image,
+    required this.quantity,
   }) : super(key: key);
 
   @override
@@ -27,7 +27,7 @@ class MaterialItem extends StatelessWidget {
           Text(
             type == app.MaterialType.currency ? CurrencyUtils.formatNumber(quantity) : '$quantity',
             textAlign: TextAlign.center,
-            style: theme.textTheme.subtitle2.copyWith(color: Colors.white),
+            style: theme.textTheme.subtitle2!.copyWith(color: Colors.white),
           ),
         ],
       ),

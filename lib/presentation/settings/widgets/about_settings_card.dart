@@ -73,7 +73,7 @@ class AboutSettingsCard extends StatelessWidget {
                   margin: const EdgeInsets.only(top: 10),
                   child: Text(
                     s.disclaimer,
-                    style: textTheme.subtitle1.copyWith(fontWeight: FontWeight.bold),
+                    style: textTheme.subtitle1!.copyWith(fontWeight: FontWeight.bold),
                   ),
                 ),
                 Container(
@@ -84,7 +84,7 @@ class AboutSettingsCard extends StatelessWidget {
                   margin: const EdgeInsets.only(top: 10),
                   child: Text(
                     s.support,
-                    style: textTheme.subtitle1.copyWith(fontWeight: FontWeight.bold),
+                    style: textTheme.subtitle1!.copyWith(fontWeight: FontWeight.bold),
                   ),
                 ),
                 Container(

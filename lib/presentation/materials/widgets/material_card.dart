@@ -10,7 +10,7 @@ import 'package:transparent_image/transparent_image.dart';
 
 class MaterialCard extends StatelessWidget {
   final String keyName;
-  final String name;
+  final String? name;
   final String image;
   final int rarity;
   final double imgWidth;
@@ -20,11 +20,11 @@ class MaterialCard extends StatelessWidget {
   final int quantity;
 
   const MaterialCard({
-    Key key,
-    @required this.keyName,
-    @required this.name,
-    @required this.image,
-    @required this.rarity,
+    Key? key,
+    required this.keyName,
+    required this.name,
+    required this.image,
+    required this.rarity,
     this.imgWidth = 70,
     this.imgHeight = 60,
     this.withElevation = true,
@@ -33,8 +33,8 @@ class MaterialCard extends StatelessWidget {
         super(key: key);
 
   MaterialCard.item({
-    Key key,
-    @required MaterialCardModel item,
+    Key? key,
+    required MaterialCardModel item,
     this.imgWidth = 70,
     this.imgHeight = 60,
     this.withElevation = true,
@@ -47,11 +47,11 @@ class MaterialCard extends StatelessWidget {
         super(key: key);
 
   const MaterialCard.withoutDetails({
-    Key key,
-    @required this.keyName,
-    @required this.image,
-    @required this.rarity,
-  })  : name = null,
+    Key? key,
+    required this.keyName,
+    required this.image,
+    required this.rarity,
+  })   : name = null,
         imgWidth = 70,
         imgHeight = 60,
         withoutDetails = true,
@@ -60,12 +60,12 @@ class MaterialCard extends StatelessWidget {
         super(key: key);
 
   const MaterialCard.quantity({
-    Key key,
-    @required this.keyName,
-    @required this.image,
-    @required this.rarity,
-    @required this.quantity,
-  })  : name = null,
+    Key? key,
+    required this.keyName,
+    required this.image,
+    required this.rarity,
+    required this.quantity,
+  })   : name = null,
         imgWidth = 70,
         imgHeight = 60,
         withoutDetails = true,
@@ -94,14 +94,14 @@ class MaterialCard extends StatelessWidget {
                 image: AssetImage(image),
               ),
               if (quantity >= 0) Text('$quantity', style: theme.textTheme.subtitle2),
-              if (!withoutDetails)
+              if (!withoutDetails && name != null)
                 Center(
                   child: Tooltip(
-                    message: name,
+                    message: name!,
                     child: Text(
-                      name,
+                      name!,
                       textAlign: TextAlign.center,
-                      style: theme.textTheme.subtitle1.copyWith(fontWeight: FontWeight.bold, color: Colors.white),
+                      style: theme.textTheme.subtitle1!.copyWith(fontWeight: FontWeight.bold, color: Colors.white),
                       overflow: TextOverflow.ellipsis,
                     ),
                   ),

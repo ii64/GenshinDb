@@ -6,15 +6,15 @@ import 'widgets/character_detail.dart';
 import 'widgets/character_detail_top.dart';
 
 class CharacterPage extends StatefulWidget {
-  const CharacterPage({Key key}) : super(key: key);
+  const CharacterPage({Key? key}) : super(key: key);
 
   @override
   _CharacterPageState createState() => _CharacterPageState();
 }
 
 class _CharacterPageState extends State<CharacterPage> with SingleTickerProviderStateMixin {
-  ScrollController _scrollController;
-  AnimationController _hideFabAnimController;
+  late ScrollController _scrollController;
+  late AnimationController _hideFabAnimController;
 
   @override
   void initState() {

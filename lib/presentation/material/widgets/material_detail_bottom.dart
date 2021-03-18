@@ -12,7 +12,7 @@ import 'package:genshindb/presentation/shared/styles.dart';
 import 'package:genshindb/presentation/shared/wrapped_ascension_material.dart';
 
 class MaterialDetailBottom extends StatelessWidget {
-  final String description;
+  final String? description;
   final int rarity;
   final List<String> charImgs;
   final List<String> weaponImgs;
@@ -20,13 +20,13 @@ class MaterialDetailBottom extends StatelessWidget {
   final List<String> relatedTo;
 
   const MaterialDetailBottom({
-    Key key,
-    @required this.description,
-    @required this.rarity,
-    @required this.charImgs,
-    @required this.weaponImgs,
-    @required this.obtainedFrom,
-    @required this.relatedTo,
+    Key? key,
+    this.description,
+    required this.rarity,
+    required this.charImgs,
+    required this.weaponImgs,
+    required this.obtainedFrom,
+    required this.relatedTo,
   }) : super(key: key);
 
   @override
@@ -40,7 +40,7 @@ class MaterialDetailBottom extends StatelessWidget {
         padding: Styles.edgeInsetAll10,
         child: Column(
           children: [
-            if (description.isNotNullEmptyOrWhitespace) _buildDescription(description, rarity, context),
+            if (description.isNotNullEmptyOrWhitespace) _buildDescription(description!, rarity, context),
             if (obtainedFrom.isNotEmpty)
               ItemDescriptionDetail(
                 title: s.obtainedFrom,

@@ -17,7 +17,7 @@ class WeaponsPage extends StatefulWidget {
   final bool isInSelectionMode;
 
   const WeaponsPage({
-    Key key,
+    Key? key,
     this.isInSelectionMode = false,
   }) : super(key: key);
 

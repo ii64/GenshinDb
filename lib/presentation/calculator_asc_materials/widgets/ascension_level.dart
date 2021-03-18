@@ -8,9 +8,9 @@ class AscensionLevel extends StatelessWidget {
   final int level;
 
   const AscensionLevel({
-    Key key,
-    @required this.isCurrentLevel,
-    @required this.level,
+    Key? key,
+    required this.isCurrentLevel,
+    required this.level,
   }) : super(key: key);
 
   @override

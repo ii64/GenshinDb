@@ -29,16 +29,16 @@ class CharacterCard extends StatelessWidget {
   final bool showMaterials;
 
   const CharacterCard({
-    Key key,
-    @required this.keyName,
-    @required this.image,
-    @required this.name,
-    @required this.rarity,
-    @required this.weaponType,
-    @required this.elementType,
-    @required this.isNew,
-    @required this.isComingSoon,
-    @required this.materials,
+    Key? key,
+    required this.keyName,
+    required this.image,
+    required this.name,
+    required this.rarity,
+    required this.weaponType,
+    required this.elementType,
+    required this.isNew,
+    required this.isComingSoon,
+    required this.materials,
     this.isInSelectionMode = false,
     this.showMaterials = true,
   }) : super(key: key);
@@ -96,7 +96,7 @@ class CharacterCard extends StatelessWidget {
                     child: Text(
                       name,
                       overflow: TextOverflow.ellipsis,
-                      style: theme.textTheme.subtitle1.copyWith(fontWeight: FontWeight.bold, color: Colors.white),
+                      style: theme.textTheme.subtitle1!.copyWith(fontWeight: FontWeight.bold, color: Colors.white),
                     ),
                   ),
                   Rarity(stars: rarity),

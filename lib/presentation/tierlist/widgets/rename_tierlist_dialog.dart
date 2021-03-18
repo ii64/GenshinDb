@@ -8,9 +8,9 @@ class RenameTierListRowDialog extends StatefulWidget {
   final String title;
 
   const RenameTierListRowDialog({
-    Key key,
-    @required this.index,
-    @required this.title,
+    Key? key,
+    required this.index,
+    required this.title,
   }) : super(key: key);
 
   @override
@@ -18,7 +18,7 @@ class RenameTierListRowDialog extends StatefulWidget {
 }
 
 class _RenameTierListRowDialogState extends State<RenameTierListRowDialog> {
-  TextEditingController _textController;
+  late TextEditingController _textController;
 
   @override
   void initState() {

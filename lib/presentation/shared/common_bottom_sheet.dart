@@ -9,19 +9,19 @@ class CommonBottomSheet extends StatelessWidget {
   final String title;
   final IconData titleIcon;
   final Widget child;
-  final Function onOk;
-  final Function onCancel;
+  final Function? onOk;
+  final Function? onCancel;
   final double iconSize;
   final bool showOkButton;
   final bool showCancelButton;
 
   const CommonBottomSheet({
-    Key key,
-    @required this.title,
-    @required this.titleIcon,
+    Key? key,
+    required this.title,
+    required this.titleIcon,
     this.onOk,
     this.onCancel,
-    @required this.child,
+    required this.child,
     this.iconSize = 25,
     this.showOkButton = true,
     this.showCancelButton = true,
@@ -48,13 +48,13 @@ class CommonBottomSheet extends StatelessWidget {
                 children: <Widget>[
                   if (showCancelButton)
                     OutlineButton(
-                      onPressed: () => onCancel != null ? onCancel() : Navigator.pop(context),
+                      onPressed: () => onCancel != null ? onCancel!() : Navigator.pop(context),
                       child: Text(s.cancel, style: TextStyle(color: theme.primaryColor)),
                     ),
                   if (showOkButton)
                     RaisedButton(
                       color: theme.primaryColor,
-                      onPressed: () => onOk != null ? onOk() : Navigator.pop(context),
+                      onPressed: () => onOk != null ? onOk!() : Navigator.pop(context),
                       child: Text(s.ok),
                     )
                 ],

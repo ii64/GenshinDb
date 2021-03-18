@@ -6,8 +6,8 @@ class TierListRowColorPicker extends StatefulWidget {
   final Color currentColor;
 
   const TierListRowColorPicker({
-    Key key,
-    @required this.currentColor,
+    Key? key,
+    required this.currentColor,
   }) : super(key: key);
 
   @override
@@ -15,7 +15,7 @@ class TierListRowColorPicker extends StatefulWidget {
 }
 
 class _TierListRowColorPickerState extends State<TierListRowColorPicker> {
-  Color selectedColor;
+  Color? selectedColor;
 
   @override
   Widget build(BuildContext context) {

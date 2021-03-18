@@ -13,8 +13,8 @@ class WeaponPage extends StatefulWidget {
 }
 
 class _WeaponPageState extends State<WeaponPage> with SingleTickerProviderStateMixin {
-  ScrollController _scrollController;
-  AnimationController _hideFabAnimController;
+  late ScrollController _scrollController;
+  late AnimationController _hideFabAnimController;
 
   @override
   void initState() {

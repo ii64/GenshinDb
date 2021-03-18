@@ -6,11 +6,11 @@ import 'extensions/scroll_controller_extensions.dart';
 
 class ScaffoldWithFab extends StatefulWidget {
   final Widget child;
-  final PreferredSizeWidget appbar;
+  final PreferredSizeWidget? appbar;
 
   const ScaffoldWithFab({
-    Key key,
-    @required this.child,
+    Key? key,
+    required this.child,
     this.appbar,
   }) : super(key: key);
 
@@ -19,8 +19,8 @@ class ScaffoldWithFab extends StatefulWidget {
 }
 
 class _ScaffoldWithFabState extends State<ScaffoldWithFab> with SingleTickerProviderStateMixin {
-  ScrollController _scrollController;
-  AnimationController _hideFabAnimController;
+  late ScrollController _scrollController;
+  late AnimationController _hideFabAnimController;
 
   @override
   void initState() {

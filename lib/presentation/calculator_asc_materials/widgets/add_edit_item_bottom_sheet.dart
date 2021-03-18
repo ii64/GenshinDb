@@ -12,27 +12,27 @@ import 'ascension_level.dart';
 import 'skill_item.dart';
 
 class AddEditItemBottomSheet extends StatelessWidget {
-  final int index;
-  final String keyName;
+  final int? index;
+  final String? keyName;
   final bool isInEditMode;
   final bool isAWeapon;
   final bool isActive;
 
   const AddEditItemBottomSheet.toAddItem({
-    Key key,
-    @required this.keyName,
-    @required this.isAWeapon,
-  })  : index = null,
+    Key? key,
+    required this.keyName,
+    required this.isAWeapon,
+  })   : index = null,
         isInEditMode = false,
         isActive = true,
         super(key: key);
 
   const AddEditItemBottomSheet.toEditItem({
-    Key key,
-    @required this.index,
-    @required this.isAWeapon,
-    @required this.isActive,
-  })  : keyName = null,
+    Key? key,
+    required this.index,
+    required this.isAWeapon,
+    required this.isActive,
+  })   : keyName = null,
         isInEditMode = true,
         super(key: key);
 
@@ -56,7 +56,7 @@ class AddEditItemBottomSheet extends StatelessWidget {
               Text(
                 s.level,
                 textAlign: TextAlign.center,
-                style: theme.textTheme.subtitle2.copyWith(fontWeight: FontWeight.bold),
+                style: theme.textTheme.subtitle2!.copyWith(fontWeight: FontWeight.bold),
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -146,14 +146,16 @@ class AddEditItemBottomSheet extends StatelessWidget {
     final newValue = await showDialog<int>(
       context: context,
       builder: (BuildContext context) {
-        return NumberPickerDialog.integer(
+        return NumberPicker(
           minValue: CalculatorAscMaterialsItemBloc.minItemLevel,
           maxValue: CalculatorAscMaterialsItemBloc.maxItemLevel,
-          title: Text(s.chooseALevel),
-          initialIntegerValue: value,
-          infiniteLoop: true,
-          cancelWidget: Text(s.cancel),
-          confirmWidget: Text(s.ok, style: TextStyle(color: theme.primaryColor)),
+          value: CalculatorAscMaterialsItemBloc.minItemLevel,
+          onChanged: (_) {},
+          // title: Text(s.chooseALevel),
+          // initialIntegerValue: value,
+          // infiniteLoop: true,
+          // cancelWidget: Text(s.cancel),
+          // confirmWidget: Text(s.ok, style: TextStyle(color: theme.primaryColor)),
         );
       },
     );
@@ -178,14 +180,14 @@ class AddEditItemBottomSheet extends StatelessWidget {
   }) {
     final event = !isInEditMode
         ? CalculatorAscMaterialsEvent.addWeapon(
-            key: keyName,
+            key: keyName!,
             currentLevel: currentLevel,
             desiredLevel: desiredLevel,
             currentAscensionLevel: currentAscensionLevel,
             desiredAscensionLevel: desiredAscensionLevel,
           )
         : CalculatorAscMaterialsEvent.updateWeapon(
-            index: index,
+            index: index!,
             currentLevel: currentLevel,
             desiredLevel: desiredLevel,
             currentAscensionLevel: currentAscensionLevel,
@@ -207,7 +209,7 @@ class AddEditItemBottomSheet extends StatelessWidget {
   }) {
     final event = !isInEditMode
         ? CalculatorAscMaterialsEvent.addCharacter(
-            key: keyName,
+            key: keyName!,
             currentLevel: currentLevel,
             desiredLevel: desiredLevel,
             skills: skills,
@@ -215,7 +217,7 @@ class AddEditItemBottomSheet extends StatelessWidget {
             desiredAscensionLevel: desiredAscensionLevel,
           )
         : CalculatorAscMaterialsEvent.updateCharacter(
-            index: index,
+            index: index!,
             currentLevel: currentLevel,
             desiredLevel: desiredLevel,
             skills: skills,

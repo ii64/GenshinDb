@@ -23,12 +23,12 @@ class ArtifactCard extends StatelessWidget {
   final bool withElevation;
 
   const ArtifactCard({
-    Key key,
-    @required this.keyName,
-    @required this.name,
-    @required this.image,
-    @required this.rarity,
-    @required this.bonus,
+    Key? key,
+    required this.keyName,
+    required this.name,
+    required this.image,
+    required this.rarity,
+    required this.bonus,
     this.imgWidth = 140,
     this.imgHeight = 120,
     this.withElevation = true,
@@ -36,12 +36,12 @@ class ArtifactCard extends StatelessWidget {
         super(key: key);
 
   const ArtifactCard.withoutDetails({
-    Key key,
-    @required this.keyName,
-    @required this.name,
-    @required this.image,
-    @required this.rarity,
-  })  : imgWidth = 70,
+    Key? key,
+    required this.keyName,
+    required this.name,
+    required this.image,
+    required this.rarity,
+  })   : imgWidth = 70,
         imgHeight = 60,
         bonus = const [],
         withoutDetails = true,
@@ -76,12 +76,12 @@ class ArtifactCard extends StatelessWidget {
                       ? Text(
                           name,
                           textAlign: TextAlign.center,
-                          style: theme.textTheme.subtitle1.copyWith(fontWeight: FontWeight.bold, color: Colors.white),
+                          style: theme.textTheme.subtitle1!.copyWith(fontWeight: FontWeight.bold, color: Colors.white),
                         )
                       : Text(
                           name,
                           textAlign: TextAlign.center,
-                          style: theme.textTheme.subtitle1.copyWith(fontWeight: FontWeight.bold, color: Colors.white),
+                          style: theme.textTheme.subtitle1!.copyWith(fontWeight: FontWeight.bold, color: Colors.white),
                           overflow: TextOverflow.ellipsis,
                         ),
                 ),

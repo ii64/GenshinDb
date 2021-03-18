@@ -19,7 +19,7 @@ class MainTabPage extends StatefulWidget {
 
 class _MainTabPageState extends State<MainTabPage> with SingleTickerProviderStateMixin {
   bool _didChangeDependencies = false;
-  TabController _tabController;
+  late TabController _tabController;
   int _index = 2;
   final _pages = [
     const CharactersPage(),

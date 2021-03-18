@@ -7,9 +7,9 @@ class AppFab extends StatelessWidget {
   final AnimationController hideFabAnimController;
 
   const AppFab({
-    Key key,
-    @required this.scrollController,
-    @required this.hideFabAnimController,
+    Key? key,
+    required this.scrollController,
+    required this.hideFabAnimController,
   }) : super(key: key);
 
   @override

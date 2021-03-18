@@ -9,7 +9,7 @@ import 'package:genshindb/presentation/shared/loading.dart';
 import '../../character/widgets/character_detail.dart';
 
 class CharacterDetailTop extends StatelessWidget {
-  const CharacterDetailTop({Key key}) : super(key: key);
+  const CharacterDetailTop({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
