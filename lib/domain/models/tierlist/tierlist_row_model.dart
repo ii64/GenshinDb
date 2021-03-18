@@ -5,8 +5,8 @@ part 'tierlist_row_model.freezed.dart';
 @freezed
 abstract class TierListRowModel with _$TierListRowModel {
   factory TierListRowModel.row({
-    String tierText,
-    int tierColor,
-    List<String> charImgs,
+    required String tierText,
+    required int tierColor,
+    required List<String> charImgs,
   }) = _Row;
 }

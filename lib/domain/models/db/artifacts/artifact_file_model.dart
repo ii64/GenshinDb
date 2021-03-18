@@ -3,19 +3,18 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import '../../../assets.dart';
 
 part 'artifact_file_model.freezed.dart';
-part 'artifact_file_model.g.dart';
 
 @freezed
 abstract class ArtifactFileModel implements _$ArtifactFileModel {
-  @late
+  // @late
   String get fullImagePath => Assets.getArtifactPath(image);
 
   factory ArtifactFileModel({
-    @required String key,
-    @required String image,
-    @required int rarityMin,
-    @required int rarityMax,
-    @required List<ArtifactFileBonusModel> bonus,
+    required String key,
+    required String image,
+    required int rarityMin,
+    required int rarityMax,
+    required List<ArtifactFileBonusModel> bonus,
   }) = _ArtifactFileModel;
 
   ArtifactFileModel._();
@@ -26,8 +25,8 @@ abstract class ArtifactFileModel implements _$ArtifactFileModel {
 @freezed
 abstract class ArtifactFileBonusModel implements _$ArtifactFileBonusModel {
   factory ArtifactFileBonusModel({
-    @required String key,
-    @required int pieces,
+    required String key,
+    required int pieces,
   }) = _ArtifactFileBonusModel;
 
   ArtifactFileBonusModel._();

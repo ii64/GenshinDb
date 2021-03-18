@@ -4,32 +4,28 @@ import 'package:genshindb/domain/enums/enums.dart';
 import 'package:genshindb/domain/models/models.dart';
 
 part 'material_file_model.freezed.dart';
-part 'material_file_model.g.dart';
 
 @freezed
 abstract class MaterialFileModel implements _$MaterialFileModel {
-  @late
   String get fullImagePath => Assets.getMaterialPath(image, type);
 
-  @late
   bool get isAnExperienceMaterial => type == MaterialType.expWeapon || type == MaterialType.expCharacter;
 
-  @late
-  ExperienceMaterialAttributesModel get experienceAttributes =>
-      isAnExperienceMaterial ? ExperienceMaterialAttributesModel.fromJson(attributes) : null;
+  ExperienceMaterialAttributesModel? get experienceAttributes =>
+      isAnExperienceMaterial ? ExperienceMaterialAttributesModel.fromJson(attributes!) : null;
 
   factory MaterialFileModel({
-    @required String key,
-    @required int rarity,
-    @required String image,
-    @required bool isFromBoss,
-    @required bool isForCharacters,
-    @required bool isForWeapons,
-    @required MaterialType type,
-    @required List<int> days,
-    @required double level,
-    @required List<ObtainedFromFileModel> obtainedFrom,
-    Map<String, dynamic> attributes,
+    required String key,
+    required int rarity,
+    required String image,
+    required bool isFromBoss,
+    required bool isForCharacters,
+    required bool isForWeapons,
+    required MaterialType type,
+    required List<int> days,
+    required double level,
+    required List<ObtainedFromFileModel> obtainedFrom,
+    Map<String, dynamic>? attributes,
   }) = _MaterialFileModel;
 
   MaterialFileModel._();
@@ -40,8 +36,8 @@ abstract class MaterialFileModel implements _$MaterialFileModel {
 @freezed
 abstract class ExperienceMaterialAttributesModel implements _$ExperienceMaterialAttributesModel {
   factory ExperienceMaterialAttributesModel({
-    @required double experience,
-    @required double pricePerUsage,
+    required double experience,
+    required double pricePerUsage,
   }) = _ExperienceMaterialAttributesModel;
 
   ExperienceMaterialAttributesModel._();
@@ -52,7 +48,7 @@ abstract class ExperienceMaterialAttributesModel implements _$ExperienceMaterial
 @freezed
 abstract class ObtainedFromFileModel implements _$ObtainedFromFileModel {
   factory ObtainedFromFileModel({
-    @required List<ItemAscensionMaterialModel> items,
+    required List<ItemAscensionMaterialModel> items,
   }) = _ObtainedFromFileModel;
 
   ObtainedFromFileModel._();

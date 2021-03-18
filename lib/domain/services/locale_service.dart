@@ -10,5 +10,5 @@ abstract class LocaleService {
 
   DateTime getCharBirthDate(String birthday);
 
-  String formatCharBirthDate(String birthday);
+  String formatCharBirthDate(String? birthday);
 }
