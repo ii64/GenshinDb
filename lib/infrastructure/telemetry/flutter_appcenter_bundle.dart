@@ -11,8 +11,8 @@ const _methodChannel = MethodChannel(_methodChannelName);
 class AppCenter {
   /// Start appcenter functionalities
   static Future<void> startAsync({
-    @required String appSecretAndroid,
-    @required String appSecretIOS,
+    String? appSecretAndroid,
+    String? appSecretIOS,
     bool enableAnalytics = true,
     bool enableCrashes = true,
     bool enableDistribute = false,
@@ -20,9 +20,9 @@ class AppCenter {
   }) async {
     String appsecret;
     if (Platform.isAndroid) {
-      appsecret = appSecretAndroid;
+      appsecret = appSecretAndroid!;
     } else if (Platform.isIOS) {
-      appsecret = appSecretIOS;
+      appsecret = appSecretIOS!;
     } else {
       throw UnsupportedError('Current platform is not supported.');
     }
@@ -41,7 +41,7 @@ class AppCenter {
   }
 
   /// Track events
-  static Future<void> trackEventAsync(String name, [Map<String, String> properties]) async {
+  static Future<void> trackEventAsync(String name, [Map<String, String>? properties]) async {
     await _methodChannel.invokeMethod('trackEvent', <String, dynamic>{
       'name': name,
       'properties': properties ?? <String, String>{},
@@ -50,7 +50,8 @@ class AppCenter {
 
   /// Check whether analytics is enalbed
   static Future<bool> isAnalyticsEnabledAsync() async {
-    return _methodChannel.invokeMethod('isAnalyticsEnabled');
+    final result = await _methodChannel.invokeMethod<bool>('isAnalyticsEnabled');
+    return result ?? false;
   }
 
   /// Get appcenter installation id
@@ -65,7 +66,8 @@ class AppCenter {
 
   /// Check whether crashes is enabled
   static Future<bool> isCrashesEnabledAsync() async {
-    return _methodChannel.invokeMethod('isCrashesEnabled');
+    final result = await _methodChannel.invokeMethod<bool>('isCrashesEnabled');
+    return result ?? false;
   }
 
   /// Enable or disable appcenter crash reports

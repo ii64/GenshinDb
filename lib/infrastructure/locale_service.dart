@@ -22,13 +22,13 @@ class LocaleServiceImpl implements LocaleService {
   }
 
   @override
-  String formatCharBirthDate(String birthday) {
+  String formatCharBirthDate(String? birthday) {
     if (birthday.isNullEmptyOrWhitespace) {
       return '';
     }
     final locale = getFormattedLocale(_settingsService.language);
-    final birthdayDate = getCharBirthDate(birthday);
-    return toBeginningOfSentenceCase(DateFormat('MMMM d', locale).format(birthdayDate));
+    final birthdayDate = getCharBirthDate(birthday!);
+    return toBeginningOfSentenceCase(DateFormat('MMMM d', locale).format(birthdayDate))!;
   }
 
   @override

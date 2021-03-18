@@ -11,13 +11,13 @@ import 'package:genshindb/domain/services/locale_service.dart';
 class GenshinServiceImpl implements GenshinService {
   final LocaleService _localeService;
 
-  CharactersFile _charactersFile;
-  WeaponsFile _weaponsFile;
-  TranslationFile _translationFile;
-  ArtifactsFile _artifactsFile;
-  MaterialsFile _materialsFile;
-  ElementsFile _elementsFile;
-  GameCodesFile _gameCodesFile;
+  late CharactersFile _charactersFile;
+  late WeaponsFile _weaponsFile;
+  late TranslationFile _translationFile;
+  late ArtifactsFile _artifactsFile;
+  late MaterialsFile _materialsFile;
+  late ElementsFile _elementsFile;
+  late GameCodesFile _gameCodesFile;
 
   GenshinServiceImpl(this._localeService);
 
@@ -139,7 +139,7 @@ class GenshinServiceImpl implements GenshinService {
         return false;
       }
 
-      final charBirthday = _localeService.getCharBirthDate(char.birthday);
+      final charBirthday = _localeService.getCharBirthDate(char.birthday!);
       return charBirthday.day == date.day && charBirthday.month == date.month;
     }).toList();
   }
@@ -341,7 +341,7 @@ class GenshinServiceImpl implements GenshinService {
         var specialAscMaterial = false;
         if (char.multiTalentAscensionMaterials != null) {
           final keyword = e.image.split('_').last;
-          final materials = char.multiTalentAscensionMaterials
+          final materials = char.multiTalentAscensionMaterials!
               .expand((m) => m.materials)
               .expand((m) => m.materials)
               .where((m) => m.materialType == MaterialType.talents)

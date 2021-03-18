@@ -1,10 +1,9 @@
-import 'package:dog/dog.dart';
+// import 'package:dog/dog.dart';
 import 'package:flutter/foundation.dart';
 import 'package:genshindb/domain/extensions/string_extensions.dart';
 import 'package:genshindb/domain/services/device_info_service.dart';
 import 'package:genshindb/domain/services/logging_service.dart';
 import 'package:genshindb/domain/services/telemetry_service.dart';
-import 'package:sprintf/sprintf.dart';
 
 class LoggingServiceImpl implements LoggingService {
   final TelemetryService _telemetryService;
@@ -13,21 +12,21 @@ class LoggingServiceImpl implements LoggingService {
   LoggingServiceImpl(this._telemetryService, this._deviceInfoService);
 
   @override
-  void info(Type type, String msg, [List<Object> args]) {
+  void info(Type type, String msg, [List<Object>? args]) {
     assert(type != null && !msg.isNullEmptyOrWhitespace);
 
     if (args != null && args.isNotEmpty) {
-      dog.i('$type - ${sprintf(msg, args)}');
+      // dog.i('$type - ${sprintf(msg, args)}');
     } else {
-      dog.i('$type - $msg');
+      // dog.i('$type - $msg');
     }
   }
 
   @override
-  void warning(Type type, String msg, [dynamic ex, StackTrace trace]) {
+  void warning(Type type, String msg, [dynamic ex, StackTrace? trace]) {
     assert(type != null && !msg.isNullEmptyOrWhitespace);
     final tag = type.toString();
-    dog.w('$tag - ${_formatEx(msg, ex)}');
+    // dog.w('$tag - ${_formatEx(msg, ex)}');
 
     if (kReleaseMode) {
       _trackWarning(tag, msg, ex, trace);
@@ -35,10 +34,10 @@ class LoggingServiceImpl implements LoggingService {
   }
 
   @override
-  void error(Type type, String msg, [dynamic ex, StackTrace trace]) {
+  void error(Type type, String msg, [dynamic ex, StackTrace? trace]) {
     assert(type != null && !msg.isNullEmptyOrWhitespace);
     final tag = type.toString();
-    dog.e('$tag - ${_formatEx(msg, ex)}');
+    // dog.e('$tag - ${_formatEx(msg, ex)}');
 
     if (kReleaseMode) {
       _trackError(tag, msg, ex, trace);
@@ -52,17 +51,17 @@ class LoggingServiceImpl implements LoggingService {
     return '$msg \n No exception available';
   }
 
-  void _trackError(String tag, String msg, [dynamic ex, StackTrace trace]) {
+  void _trackError(String tag, String msg, [dynamic ex, StackTrace? trace]) {
     final map = _buildError(tag, msg, ex, trace);
     _telemetryService.trackEventAsync('Error - ${DateTime.now()}', map);
   }
 
-  void _trackWarning(String tag, String msg, [dynamic ex, StackTrace trace]) {
+  void _trackWarning(String tag, String msg, [dynamic ex, StackTrace? trace]) {
     final map = _buildError(tag, msg, ex, trace);
     _telemetryService.trackEventAsync('Warning - ${DateTime.now()}', map);
   }
 
-  Map<String, String> _buildError(String tag, String msg, [dynamic ex, StackTrace trace]) {
+  Map<String, String> _buildError(String tag, String msg, [dynamic ex, StackTrace? trace]) {
     final map = {
       'tag': tag,
       'msg': msg ?? 'No message available',

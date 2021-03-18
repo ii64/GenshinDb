@@ -17,47 +17,47 @@ class SettingsServiceImpl extends SettingsService {
 
   bool _initialized = false;
 
-  SharedPreferences _prefs;
+  late SharedPreferences _prefs;
   final LoggingService _logger;
 
   @override
-  AppThemeType get appTheme => AppThemeType.values[(_prefs.getInt(_appThemeKey))];
+  AppThemeType get appTheme => AppThemeType.values[(_prefs.getInt(_appThemeKey)!)];
 
   @override
   set appTheme(AppThemeType theme) => _prefs.setInt(_appThemeKey, theme.index);
 
   @override
-  AppAccentColorType get accentColor => AppAccentColorType.values[_prefs.getInt(_accentColorKey)];
+  AppAccentColorType get accentColor => AppAccentColorType.values[_prefs.getInt(_accentColorKey)!];
 
   @override
   set accentColor(AppAccentColorType accentColor) => _prefs.setInt(_accentColorKey, accentColor.index);
 
   @override
-  AppLanguageType get language => AppLanguageType.values[_prefs.getInt(_appLanguageKey)];
+  AppLanguageType get language => AppLanguageType.values[_prefs.getInt(_appLanguageKey)!];
 
   @override
   set language(AppLanguageType lang) => _prefs.setInt(_appLanguageKey, lang.index);
 
   @override
-  bool get isFirstInstall => _prefs.getBool(_firstInstallKey);
+  bool get isFirstInstall => _prefs.getBool(_firstInstallKey)!;
 
   @override
   set isFirstInstall(bool itIs) => _prefs.setBool(_firstInstallKey, itIs);
 
   @override
-  bool get showCharacterDetails => _prefs.getBool(_showCharacterDetailsKey);
+  bool get showCharacterDetails => _prefs.getBool(_showCharacterDetailsKey)!;
 
   @override
   set showCharacterDetails(bool show) => _prefs.setBool(_showCharacterDetailsKey, show);
 
   @override
-  bool get showWeaponDetails => _prefs.getBool(_showWeaponDetailsKey);
+  bool get showWeaponDetails => _prefs.getBool(_showWeaponDetailsKey)!;
 
   @override
   set showWeaponDetails(bool show) => _prefs.setBool(_showWeaponDetailsKey, show);
 
   @override
-  AppServerResetTimeType get serverResetTime => AppServerResetTimeType.values[_prefs.getInt(_serverResetTimeKey)];
+  AppServerResetTimeType get serverResetTime => AppServerResetTimeType.values[_prefs.getInt(_serverResetTimeKey)!];
 
   @override
   set serverResetTime(AppServerResetTimeType time) => _prefs.setInt(_serverResetTimeKey, time.index);
@@ -129,18 +129,11 @@ class SettingsServiceImpl extends SettingsService {
     try {
       _logger.info(runtimeType, '_getDefaultLangToUse: Trying to retrieve device lang...');
       final deviceLocale = await Devicelocale.currentAsLocale;
-      final appLang = languagesMap.entries.firstWhere((val) => val.value.code == deviceLocale.languageCode, orElse: () => null);
-      if (appLang == null) {
-        _logger.info(
-          runtimeType,
-          "_getDefaultLangToUse: Couldn't find an appropriate app language for = ${deviceLocale.languageCode}_${deviceLocale.countryCode}, falling back to english",
-        );
-        return AppLanguageType.english;
-      }
-
+      final defaultLang = languagesMap.entries.firstWhere((element) => element.key == AppLanguageType.english);
+      final appLang = languagesMap.entries.firstWhere((val) => val.value.code == deviceLocale?.languageCode, orElse: () => defaultLang);
       _logger.info(
         runtimeType,
-        '_getDefaultLangToUse: Found an appropriate language to use for = ${deviceLocale.languageCode}_${deviceLocale.countryCode}, that is = ${appLang.key}',
+        '_getDefaultLangToUse: For device lang = ${deviceLocale?.languageCode}_${deviceLocale?.countryCode}, we will use = ${appLang.key}',
       );
       return appLang.key;
     } catch (e, s) {
