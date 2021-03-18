@@ -71,7 +71,7 @@ class WeaponsBloc extends Bloc<WeaponsEvent, WeaponsState> {
   }
 
   WeaponsState _buildInitialState({
-    String search,
+    String? search,
     List<WeaponType> weaponTypes = const [],
     int rarity = 0,
     WeaponFilterType weaponFilterType = WeaponFilterType.rarity,

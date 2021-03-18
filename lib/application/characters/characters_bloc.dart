@@ -83,7 +83,7 @@ class CharactersBloc extends Bloc<CharactersEvent, CharactersState> {
 
 //TODO: FALTA UN DELAY EN EL SEARCH
   CharactersState _buildInitialState({
-    String search,
+    String? search,
     List<WeaponType> weaponTypes = const [],
     List<ElementType> elementTypes = const [],
     int rarity = 0,

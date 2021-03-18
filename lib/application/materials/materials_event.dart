@@ -4,7 +4,7 @@ part of 'materials_bloc.dart';
 abstract class MaterialsEvent implements _$MaterialsEvent {
   const factory MaterialsEvent.init() = _Init;
   const factory MaterialsEvent.searchChanged({
-    @required String search,
+    required String search,
   }) = _SearchChanged;
 
   const factory MaterialsEvent.rarityChanged(int rarity) = _RarityChanged;

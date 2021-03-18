@@ -4,7 +4,7 @@ part of 'weapons_bloc.dart';
 abstract class WeaponsEvent with _$WeaponsEvent {
   const factory WeaponsEvent.init() = _Init;
   const factory WeaponsEvent.searchChanged({
-    @required String search,
+    required String search,
   }) = _SearchChanged;
 
   const factory WeaponsEvent.weaponTypeChanged(WeaponType weaponType) = _WeaponTypesChanged;

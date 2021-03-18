@@ -4,8 +4,8 @@ part of 'url_page_bloc.dart';
 abstract class UrlPageState with _$UrlPageState {
   const factory UrlPageState.loading() = _Loading;
   const factory UrlPageState.loaded({
-    @required String wishSimulatorUrl,
-    @required String mapUrl,
-    @required bool hasInternetConnection,
+    required String wishSimulatorUrl,
+    required String mapUrl,
+    required bool hasInternetConnection,
   }) = _Loaded;
 }

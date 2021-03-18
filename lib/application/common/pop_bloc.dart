@@ -15,12 +15,12 @@ abstract class PopBloc<Event, State> extends Bloc<Event, State> {
   void pop() {
     final key = _popAndGetLastKey();
     if (key.isNotNullEmptyOrWhitespace) {
-      final event = getEventForPop(key);
+      final event = getEventForPop(key!);
       add(event);
     }
   }
 
-  String _popAndGetLastKey() {
+  String? _popAndGetLastKey() {
     if (currentItemsInStack.isEmpty) {
       return null;
     }

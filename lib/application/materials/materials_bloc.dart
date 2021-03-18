@@ -52,7 +52,7 @@ class MaterialsBloc extends Bloc<MaterialsEvent, MaterialsState> {
   }
 
   MaterialsState _buildInitialState({
-    String search,
+    String? search,
     int rarity = 0,
     MaterialType type = MaterialType.all,
     MaterialFilterType filterType = MaterialFilterType.rarity,

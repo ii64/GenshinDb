@@ -5,8 +5,8 @@ abstract class TierListState with _$TierListState {
   const factory TierListState.loading() = _LoadingState;
 
   const factory TierListState.loaded({
-    @required List<TierListRowModel> rows,
-    @required List<String> charsAvailable,
-    @required bool readyToSave,
+    required List<TierListRowModel> rows,
+    required List<String> charsAvailable,
+    required bool readyToSave,
   }) = _LoadedState;
 }
